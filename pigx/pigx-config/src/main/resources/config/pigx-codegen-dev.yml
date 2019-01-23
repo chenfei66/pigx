@@ -1,0 +1,17 @@
+## spring security 配置
+security:
+  oauth2:
+    client:
+      client-id: ENC(gPFcUOmJm8WqM3k3eSqS0Q==)
+      client-secret: ENC(gPFcUOmJm8WqM3k3eSqS0Q==)
+      scope: server
+# 数据源配置
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    username: scott
+    password: tiger
+    url: jdbc:oracle:thin:@127.0.0.1:1521:XE
+  resources:
+    static-locations: classpath:/static/,classpath:/views/

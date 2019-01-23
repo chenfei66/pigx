@@ -1,0 +1,54 @@
+## spring security 配置
+security:
+  oauth2:
+    client:
+      client-id: ENC(ltJPpR50wT0oIY9kfOe1Iw==)
+      client-secret: ENC(ltJPpR50wT0oIY9kfOe1Iw==)
+      scope: server
+      # 默认放行url,子模块重写时application-dev.yml中的公共配置会被覆盖,所以要把公共配置中的放行url再写一次
+      ignore-urls:
+        - '/actuator/**'
+        - '/v2/api-docs'
+        - '/user/info/*'
+        - '/social/info/*'
+        - '/mobile/*'
+        - '/log/save'
+
+# 数据源
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    username: scott
+    password: tiger
+    url: jdbc:oracle:thin:@127.0.0.1:1521:XE
+
+# swagger相关配置,覆盖全局配置
+swagger:
+  authorization:
+    authorization-scope-list:
+      - scope: 'server'
+        description: 'server all'
+      - scope: 'read'
+        description: 'read all'
+      - scope: 'write'
+        description: 'access all'
+
+# 文件系统
+minio:
+  url: http://139.224.200.249:9090
+  access-key: lengleng
+  secret-key: lengleng
+
+# Logger Config
+logging:
+  level:
+    com.pig4cloud.pigx.admin.mapper: debug
+
+mybatis-plus:
+  global-config:
+    db-config:
+      db-type: oracle
+  configuration:
+    jdbc-type-for-null: null
+
